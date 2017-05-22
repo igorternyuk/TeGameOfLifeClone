@@ -37,6 +37,7 @@ public class View implements ModelListener{
     public static void main(String[] args){
         View mainWindow = new View();
         mainWindow.go();
+        Rectangle rect = new Rectangle();
     }
 
     public void go(){
@@ -265,15 +266,9 @@ public class View implements ModelListener{
         int result = openDialog.showOpenDialog(frame);
         if(result == JFileChooser.APPROVE_OPTION){
             String absPath = openDialog.getSelectedFile().getAbsolutePath();
-            try {
-                FileInputStream fis = new FileInputStream(absPath);
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                controller.readFromFile(absPath);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            //FileInputStream fis = new FileInputStream(absPath);
+            //ObjectInputStream ois = new ObjectInputStream(fis);
+            controller.readFromFile(absPath);
         }
     }
 
@@ -294,7 +289,7 @@ public class View implements ModelListener{
         @Override
         public void paint(Graphics g){
             super.paint(g);
-            for(int x = 0; x < Constants.LIVES_COUNT; ++x){
+             for(int x = 0; x < Constants.LIVES_COUNT; ++x){
                 for(int y = 0; y < Constants.LIVES_COUNT; ++y){                  
                     if(model.getCell(x, y)){
                         if(model.isColoredMode()){

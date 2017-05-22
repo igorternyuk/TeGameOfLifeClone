@@ -113,6 +113,7 @@ public class Model {
             }
         }        
     }
+    
     public void toggleAutomodeOn(){
         automode = true;
     }
